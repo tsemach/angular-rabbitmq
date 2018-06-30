@@ -1,0 +1,27 @@
+<!--<div class="nav-scroller bg-white box-shadow">-->
+  <!--<nav class="nav nav-underline">-->
+    <!--<a class="nav-link active" href="#">New</a>-->
+    <!--<a class="nav-link active" (onClick)="onPublish()">Publish</a>-->
+    <!--<a class="nav-link active" appGreenHighLight href="#">Run</a>-->
+  <!--</nav>-->
+<!--</div>-->
+
+<div class="nav-scroller bg-white box-shadow">
+  <nav class="nav nav-underline">
+
+    <!--<button type="button" class="btn btn-link" (click)="onPublish()">New</button>-->
+    <p-tieredMenu #menu [model]="newItems" [popup]="true"></p-tieredMenu>
+    <button #btn
+      type="button"
+      pButton class="btn btn-link"
+      icon="fa fa-list"
+      [ngStyle]="{backgroundColor: 'transparent ', color: '#2682fe', border: 'none'}"
+      label="New"
+      (click)="menu.toggle($event)"></button>
+
+    <button type="button" class="btn btn-link" (click)="onDelete()" disabled="true">Delete</button>
+    <button type="button" class="btn btn-link" (click)="onPublish()">Publish</button>
+    <button type="button" class="btn btn-link" (click)="onPublish()">Run</button>
+  </nav>
+</div>
+

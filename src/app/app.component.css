@@ -1,0 +1,6 @@
+.navbar-nav li a:hover, .navbar-nav > .active > a {
+  color: #fff !important;
+
+  /* background-color:bisque !important; */
+  background-image: none !important;
+}

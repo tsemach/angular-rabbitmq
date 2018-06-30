@@ -1,0 +1,103 @@
+{
+    "data": [
+        {
+            "name": "rule-01",
+            "source": "work.exchange:events.#",            
+            "filter": [
+                {
+                    "name": "buffer-to-string",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                },
+                {
+                    "name": "add-source",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                }
+            ],
+            "match": [
+                {
+                    "name": "is-field-include",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                },
+                {
+                    "name": "is-field-not-include",
+                    "from": {"type": "json", "data": "msg.content.length"},
+                    "what": {"operator": "> from", "data": "400"}
+                }
+            ],
+            "action": [
+                {
+                    "name": "save-to-database"                
+                }
+            ]
+        },
+        {
+            "name": "rule-02",
+            "source": "work.exchange:events-2.#",            
+            "filter": [
+                {
+                    "name": "buffer-to-string",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                },
+                {
+                    "name": "more-source",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                }
+            ],
+            "match": [
+                {
+                    "name": "is-field-include",
+                    "from": {"type": "json", "data": "msg.property.is_included"},
+                    "what": {"operator": "== to", "data": "500"}                    
+                }
+            ],
+            "action": [
+                {
+                    "name": "save-to-database"                
+                }
+            ]
+        },
+        {
+            "name": "rule-03",
+            "source": "work.exchange:events-3.#",
+            "filter": [
+                {
+                    "name": "buffer-to-string",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                },
+                {
+                    "name": "more-source",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                }
+            ],
+            "match": [
+                {
+                    "name": "is-field-include-01",
+                    "from": {"type": "json", "data": "msg.content.status1"},
+                    "what": {"operator": "== to1", "data": "1001"}                    
+                },
+                {
+                    "name": "is-field-include-02",
+                    "from": {"type": "json", "data": "msg.content.status2"},
+                    "what": {"operator": "== to1", "data": "1002"}                    
+                },
+                {
+                    "name": "is-field-include-03",
+                    "from": {"type": "json", "data": "msg.content.status3"},
+                    "what": {"operator": "== to1", "data": "1003"}                    
+                }                                
+            ],
+            "action": [
+                {
+                    "name": "save-to-database"                
+                }
+            ]
+        }        
+    ]
+}

@@ -1,0 +1,72 @@
+<div class="col">
+    <button class="fa fa-1x" (click)="showDialogToAdd()">
+        <i style="font-size:18px" class="fa">&#xf0fe;</i>
+    </button>
+    <!-- <p *ngFor="let a of action">{{a.name}}</p>         -->
+     <div class="content-section implementation">
+      <p-listbox [options]="action" [(ngModel)]="selectedAction" (onDblClick)="onClick($event)" optionLabel="action"></p-listbox>
+  </div>
+</div>
+
+<p-dialog header="Action Editor" [(visible)]="displayActionEditorDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="600" resizable="true" height="auto">
+  <div class="ui-g ui-fluid" *ngIf="actionToEdit">
+    <div class="ui-g-12">
+      <!--<div class="ui-g-2">-->
+        <!--<label appBasicHighLight for="name">Name</label>-->
+      <!--</div>-->
+
+      <!--<div class="ui-g-10" *ngIf="!isReadonly; else nameInputEditable">-->
+        <!--<input pInputText id="name" [(ngModel)]="actionToEdit.name" readonly/>-->
+      <!--</div>-->
+      <!--<ng-template #nameInputEditable>-->
+        <!--<div class="ui-g-10">-->
+          <!--<input pInputText id="name" [(ngModel)]="actionToEdit.name"/>-->
+        <!--</div>-->
+      <!--</ng-template>-->
+
+      <div class="ui-g-12">
+        <div class="ui-g-2">
+          <label appBetterHighlight for="from">Action</label>
+        </div>
+        <div class="ui-g-10">
+          <p-multiSelect
+            [options]="actions"
+            [(ngModel)]="selectedFieldAction"
+            (onChange)="onActionChange($event)"
+            [showToggleAll]="false"
+            [showHeader]="false"
+            appendTo="body"
+            defaultLabel="Record">
+          </p-multiSelect>
+        </div>
+      </div>
+    </div>
+    <!--<div class="ui-g-12">-->
+      <!--<div class="ui-g-2">-->
+        <!--<label appBetterHighlight for="from">Fields</label>-->
+      <!--</div>-->
+      <!--<div class="ui-g-10">-->
+        <!--<p-multiSelect-->
+          <!--[options]="fields"-->
+          <!--[(ngModel)]="selectedFieldField"-->
+          <!--[showToggleAll]="false"-->
+          <!--[showHeader]="false"-->
+          <!--defaultLabel="Id">-->
+        <!--</p-multiSelect>-->
+      <!--</div>-->
+    <!--</div>-->
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane">
+      <button pButton type="button" (click)="cancel($event)" label="Cancel"></button>
+      <button pButton type="button" (click)="delete($event)" label="Delete"></button>
+      <button pButton type="button" (click)="save($event)" label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+
+
+
+
+

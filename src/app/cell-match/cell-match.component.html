@@ -1,0 +1,65 @@
+<div class="col">
+    <button class="fa fa-1x" (click)="showDialogToAdd()">
+        <i style="font-size:18px" class="fa">&#xf0fe;</i>
+    </button>
+    <!-- <p *ngFor="let m of match">{{m.name}}</p>   -->
+    <div class="content-section implementation">
+        <p-listbox [options]="match" [(ngModel)]="selectedMatch" (onDblClick)="onClick($event)" optionLabel="name"></p-listbox>
+    </div>
+</div>
+
+<p-dialog header="Match Editor" [(visible)]="displayMatchEditorDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="600" resizable="true" height="auto">
+    <div class="ui-g ui-fluid" *ngIf="matchToEdit">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label appBasicHighLight for="name">Name</label>
+            </div>
+            <div class="ui-g-8" *ngIf="!isReadonly; else nameInputEditable">
+                <input pInputText id="name" [(ngModel)]="matchToEdit.name" readonly/>
+            </div>
+            <ng-template #nameInputEditable>
+                <div class="ui-g-8">
+                  <input pInputText id="name" [(ngModel)]="matchToEdit.name"/>
+            </div>
+            </ng-template>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label appBetterHighlight for="from">From</label>
+            </div>
+            <div class="ui-g-2">
+                <p-dropdown [options]="types" [(ngModel)]="selectedType" (onChange)="onTypeChange($event)" [autoWidth]="false" placeholder="Select Type" optionLabel="name" [showClear]="false"> </p-dropdown>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="from" [(ngModel)]="matchToEdit.from.data" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-2">
+                <label for="operator">Operator</label>
+            </div>
+            <div class="ui-g-2">
+                <p-dropdown
+                  [options]="operations"
+                  [(ngModel)]="selectedOperation"
+                  (onChange)="onOperationChange($event)"
+                  [autoWidth]="false"
+                  placeholder="Op"
+                  appendTo="body"
+                  optionLabel="name"
+                  [showClear]="false">
+                </p-dropdown>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="operator" [(ngModel)]="matchToEdit.what.data" />
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane">
+            <button pButton type="button" (click)="cancel($event)" label="Cancel"></button>
+            <button pButton type="button" (click)="delete($event)" label="Delete"></button>
+            <button pButton type="button" (click)="save($event)" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>

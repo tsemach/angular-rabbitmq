@@ -1,0 +1,37 @@
+{
+    "data": [
+        {
+            "name": "rule-01",
+            "source": "work.exchange:events-1.#",            
+            "filter": [
+                {
+                    "name": "buffer-to-string",
+                    "from": {"type": "json", "data": "msg.content.status"},                
+                    "what": {"operator": "== to", "data": "200"}  
+                },
+                {
+                    "name": "add-source",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": "msg.header.properites.source"
+                }
+            ],
+            "match": [
+                {
+                    "name": "is-field-include",
+                    "from": {"type": "json", "data": "msg.content.status"},
+                    "what": {"operator": "== to", "data": "200"}                    
+                },
+                {
+                    "name": "is-field-not-include",
+                    "from": {"type": "json", "data": "msg.content.length"},
+                    "what": {"operator": "> from", "data": "400"}
+                }
+            ],
+            "action": [
+                {
+                    "name": "save-to-database"                
+                }
+            ]
+        }
+    ]
+}

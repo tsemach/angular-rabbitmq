@@ -1,0 +1,29 @@
+<p-dialog
+  header="Add New Rule"
+  [(visible)]="displayNewRuleEditorDialog"
+  [responsive]="true" showEffect="fade"
+  [modal]="true"
+  resizable="true"
+  height="auto">
+  <div class="row">
+    <div class="ui-g-12">
+      <div class="ui-g-4">
+        <label appBasicHighLight for="name">Rule Name</label>
+        <!--<label appBetterHighlight for="from">From</label>-->
+      </div>
+      <div class="ui-g-8">
+        <input pInputText id="from" [(ngModel)]="name" />
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <div class="ui-dialog-buttonpane">
+      <button pButton type="button" (click)="onCancel($event)" label="Cancel"></button>
+      <!-- <button pButton type="button" (click)="onDelete($event)" label="Delete"></button>             -->
+      <button pButton type="button" (click)="onSave($event)" label="Save"></button>
+    </div>
+  </p-footer>
+</p-dialog>
+
+
+

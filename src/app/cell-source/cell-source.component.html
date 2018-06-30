@@ -1,0 +1,33 @@
+<!--<div class="col">-->
+  <!--<button class="fa fa-1x" (click)="showDialogToAdd()">-->
+    <!--<i style="font-size:18px" class="fa">&#xf0fe;</i>-->
+  <!--</button>-->
+  <!--<p (click)="onClick($event)">{{source}}</p>-->
+  <!--<div class="content-section implementation">-->
+    <!--<p-listbox [options]="match" [(ngModel)]="selectedSource" (onDblClick)="onClick($event)" optionLabel="name"></p-listbox>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="col">
+  <button class="fa fa-1x" (click)="showDialogToAdd()">
+    <i style="font-size:18px" class="fa">&#xf0fe;</i>
+  </button>
+  <!-- <p *ngFor="let m of match">{{m.name}}</p>   -->
+  <div class="content-section implementation">
+    <p-listbox [options]="source" [(ngModel)]="selectedSource" (onDblClick)="onClick($event)" optionLabel="name"></p-listbox>
+  </div>
+</div>
+
+<p-dialog header="Source Editor" [(visible)]="displaySourceEditorDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="600" resizable="true" height="auto">
+  <div class="row">
+    <label appBasicHighLight for="name">Name</label>
+    <input pInputText id="from" [(ngModel)]="sourceToEdit.name" />
+  </div>
+  <p-footer>
+      <div class="ui-dialog-buttonpane">
+          <button pButton type="button" (click)="onCancel($event)" label="Cancel"></button>
+          <!-- <button pButton type="button" (click)="onDelete($event)" label="Delete"></button>             -->
+          <button pButton type="button" (click)="onSave($event)" label="Save"></button>
+      </div>
+  </p-footer>
+</p-dialog>
