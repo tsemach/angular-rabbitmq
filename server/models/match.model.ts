@@ -10,7 +10,7 @@ export class MatchModel extends Model<MatchModel> {
 
     @Column
     name: string;
-    
+
     @ForeignKey(() => RuleModel)
     @Column
     ruleId: number;
