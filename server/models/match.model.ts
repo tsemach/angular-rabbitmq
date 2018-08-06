@@ -4,7 +4,7 @@ import {RuleModel} from "./rule.model";
 
 @Table({tableName: 'Matchs'})
 export class MatchModel extends Model<MatchModel> {
-
+store TxJobs
     @Column({primaryKey: true, autoIncrement: true})
     id: number;
 

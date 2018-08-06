@@ -32,9 +32,9 @@
     "ts-node": "^7.0.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/nodemon dist/src/application/application.js",
+    "start": "./node_modules/.bin/nodemon dist/index.js",
     "test": "./node_modules/mocha/bin/mocha -r ts-node/register tests/**/*.spec.ts",
-    "dev": "./node_modules/.bin/nodemon build/application.js"
+    "dev": "./node_modules/.bin/nodemon dist/index.js"
   },
   "keywords": [],
   "author": "",
